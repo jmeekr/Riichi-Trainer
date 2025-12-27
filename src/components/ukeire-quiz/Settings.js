@@ -30,6 +30,7 @@ class Settings extends React.Component {
                 useTimer: false,
                 time: 5,
                 extraTime: 10,
+                bestTile: true
             }
         };
 
@@ -66,6 +67,7 @@ class Settings extends React.Component {
                     tilesInHand: savedSettings.tilesInHand || 14,
                     useTimer: savedSettings.useTimer,
                     time: savedSettings.time || 5,
+                    bestTile: savedSettings.bestTile,
                     extraTime: savedSettings.extraTime === undefined ? 10 : savedSettings.extraTime
                 }
 
@@ -223,6 +225,13 @@ class Settings extends React.Component {
                                 <Input className="form-check-input" type="checkbox" id="sort"
                                     checked={this.state.settings.sort} onChange={this.onSettingChanged} />
                                 <Label className="form-check-label" for="sort">{t("settings.sort")}</Label>
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col className="form-check form-check-inline">
+                                <Input className="form-check-input" type="checkbox" id="bestTile"
+                                    checked={this.state.settings.bestTile} onChange={this.onSettingChanged} />
+                                <Label className="form-check-label" for="bestTile">{t("bestTile")}</Label>
                             </Col>
                         </Row>
                         <Row>

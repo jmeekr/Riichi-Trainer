@@ -442,6 +442,7 @@ class UkeireQuiz extends React.Component {
 
         this.setState({
             hand: hand,
+            best: bestTile,
             tilePool: tilePool,
             remainingTiles: remainingTiles,
             players: players,
@@ -594,11 +595,13 @@ class UkeireQuiz extends React.Component {
                 {this.state.settings.sort
                     ? <Hand tiles={this.state.hand}
                         lastDraw={this.state.lastDraw}
+                        bestTile={this.state.settings.bestTile ? this.state.best: 0}
                         onTileClick={this.onTileClicked}
                         showIndexes={this.state.settings.showIndexes && !blind}
                         blind={blind} />
                     : <SortedHand tiles={this.state.shuffle}
                         lastDraw={this.state.lastDraw}
+                        bestTile={this.state.settings.bestTile ? this.state.best: 0}
                         onTileClick={this.onTileClicked}
                         showIndexes={this.state.settings.showIndexes && !blind}
                         blind={blind} />

@@ -19,7 +19,12 @@ function Hand(props) {
         hand[lastDraw]--;
     }
 
+    let None = "None";
+    let best =  "5px solid black"
+    let border = None;
+
     for (let i = 0; i < hand.length; i++) {
+        // aka red 5
         if (i % 10 === 5 && hand[i - 5] > 0) {
             for (let j = 0; j < hand[i - 5]; j++) {
                 tiles.push((
@@ -33,15 +38,22 @@ function Hand(props) {
                 ));
             }
         }
+        // the rest of the hand without the new tile
 
         if (hand[i] === 0) continue;
         if (i % 10 === 0) continue;
-
         for (let j = 0; j < hand[i]; j++) {
+            border = None;
+            console.log(props.bestTile + " " + i);
+            if (props.bestTile === i){
+                border=best;
+            }
+
             tiles.push((
                 <Tile className="handTile"
                     key={index++}
                     tile={i}
+                    style={{border:border}}
                     displayTile={hasLastDraw && props.blind ? 30 : i}
                     onClick={props.onTileClick}
                     showIndexes={props.showIndexes}
@@ -51,6 +63,7 @@ function Hand(props) {
 
     }
 
+    // new tile
     if (hasLastDraw) {
         hand[lastDraw]++;
         tiles.push((

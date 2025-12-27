@@ -14,6 +14,7 @@ function Tile(props) {
                 className="tile"
                 name={props.tile}
                 src={getTileImage(displayTile)}
+                style={props.style}
                 title={getTileAsText(t, displayTile)}
                 alt={getTileAsText(t, displayTile)}
                 onClick={props.onClick}
